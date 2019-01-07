@@ -1,0 +1,14 @@
+.text {
+  border: 0 solid black;
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  flex-direction: column;
+  align-content: flex-start;
+  flex-shrink: 0;
+  font-size: 32
+}
+.richtext {
+  margin-top: 0;
+  margin-bottom: 0
+}

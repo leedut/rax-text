@@ -1,5 +1,6 @@
 import {Component, createElement, PropTypes} from 'rax';
 import {isWeex} from 'universal-env';
+import './index.css';
 
 class Text extends Component {
   static propTypes = {};
@@ -74,7 +75,6 @@ class Text extends Component {
     } else {
       let styleProps = {
         whiteSpace: 'pre-wrap',
-        ...styles.text,
         ...nativeProps.style
       };
       let numberOfLines = props.numberOfLines;
@@ -90,7 +90,7 @@ class Text extends Component {
         styleProps.overflow = 'hidden';
       }
 
-      return <span {...nativeProps} style={styleProps}>{textString}</span>;
+      return <span className="text" {...nativeProps} style={styleProps}>{textString}</span>;
     }
   };
 
@@ -104,16 +104,12 @@ class Text extends Component {
         style: props.style || {},
       }
     };
-    const styleProps = {
-      ...styles.richtext,
-      ...nativeProps.style
-    };
 
     if (isWeex) {
       children = transformChildren(children, this);
     }
 
-    return <p {...nativeProps} style={styleProps}>{children}</p>;
+    return <p className="richtext" {...nativeProps}>{children}</p>;
   };
 }
 
@@ -152,22 +148,5 @@ function transformChildren(children, instance) {
 
   return elements;
 }
-
-const styles = {
-  text: {
-    border: '0 solid black',
-    position: 'relative',
-    boxSizing: 'border-box',
-    display: 'block',
-    flexDirection: 'column',
-    alignContent: 'flex-start',
-    flexShrink: 0,
-    fontSize: 32
-  },
-  richtext: {
-    marginTop: 0,
-    marginBottom: 0
-  }
-};
 
 export default Text;
