@@ -18,13 +18,6 @@ describe('Text', () => {
       <Text>Example</Text>
     );
     let tree = component.toJSON();
-    expect(tree.style.border).toBe('0 solid black');
-    expect(tree.style.position).toBe('relative');
-    expect(tree.style.boxSizing).toBe('border-box');
-    expect(tree.style.display).toBe('block');
-    expect(tree.style.flexDirection).toBe('column');
-    expect(tree.style.alignContent).toBe('flex-start');
-    expect(tree.style.flexShrink).toBe(0);
-    expect(tree.style.fontSize).toBe(32);
+    expect(tree.style.whiteSpace).toBe('pre-wrap');
   });
 });
