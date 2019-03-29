@@ -18,6 +18,7 @@ describe('Text', () => {
       <Text>Example</Text>
     );
     let tree = component.toJSON();
-    expect(tree.style.whiteSpace).toBe('pre-wrap');
+
+    expect(tree.style[1].whiteSpace).toBe('pre-wrap');
   });
 });
