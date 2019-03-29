@@ -7,7 +7,7 @@ export default (props) => {
   if (!Array.isArray(children)) {
     children = [children];
   }
-  
+
   let nativeProps = {
     ...props,
     ...{
