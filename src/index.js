@@ -1,6 +1,5 @@
 import {createElement} from 'rax';
 import {isWeex} from 'universal-env';
-import './index.css';
 
 export default (props) => {
   let {children} = props;
@@ -54,6 +53,18 @@ export default (props) => {
       styleProps.overflow = 'hidden';
     }
 
-    return <span className="text" {...nativeProps} style={styleProps}>{textString}</span>;
+    return <span className="text" {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
   }
 };
+
+let styles = {
+  text: {
+    border: '0 solid black',
+    box-sizing: 'border-box',
+    display: 'block',
+    flex-direction: 'column',
+    align-content: 'flex-start',
+    flex-shrink: 0,
+    font-size: 32
+  }
+}
