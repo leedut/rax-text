@@ -53,18 +53,18 @@ export default (props) => {
       styleProps.overflow = 'hidden';
     }
 
-    return <span className="text" {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
+    return <span {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
   }
 };
 
 let styles = {
   text: {
     border: '0 solid black',
-    box-sizing: 'border-box',
+    boxSizing: 'border-box',
     display: 'block',
-    flex-direction: 'column',
-    align-content: 'flex-start',
-    flex-shrink: 0,
-    font-size: 32
+    flexDirection: 'column',
+    alignContent: 'flex-start',
+    flexShrink: 0,
+    fontSize: 32
   }
 }
