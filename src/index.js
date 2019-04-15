@@ -67,4 +67,4 @@ let styles = {
     flexShrink: 0,
     fontSize: 32
   }
-}
+};
