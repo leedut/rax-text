@@ -1,7 +1,7 @@
-import {createElement} from 'rax';
+import {createElement, forwardRef} from 'rax';
 import {isWeex} from 'universal-env';
 
-export default (props) => {
+let Text = (props, ref) => {
   let {children} = props;
   if (!Array.isArray(children)) {
     children = [children];
@@ -34,7 +34,7 @@ export default (props) => {
 
     nativeProps.value = textString;
 
-    return <text {...nativeProps} />;
+    return <text ref={ref} {...nativeProps} />;
   } else {
     let styleProps = {
       whiteSpace: 'pre-wrap',
@@ -53,7 +53,7 @@ export default (props) => {
       styleProps.overflow = 'hidden';
     }
 
-    return <span {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
+    return <span {...nativeProps} ref={ref} style={{...styles.text, ...styleProps}}>{textString}</span>;
   }
 };
 
@@ -68,3 +68,7 @@ let styles = {
     fontSize: 32
   }
 };
+
+Text = forwardRef(Text);
+
+export default Text;
