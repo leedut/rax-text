@@ -65,7 +65,7 @@ export default (props: Props) => {
 
       styleProps.overflow = 'hidden';
     }
-
+  
     return <span {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
   }
 };
