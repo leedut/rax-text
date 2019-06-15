@@ -1,13 +1,26 @@
-import {createElement} from 'rax';
-import {isWeex} from 'universal-env';
+import { createElement } from 'rax';
+import { isWeex } from 'universal-env';
+import { Props } from './types';
 
-export default (props) => {
-  let {children} = props;
+let styles = {
+  text: {
+    border: '0 solid black',
+    boxSizing: 'border-box',
+    display: 'block',
+    flexDirection: 'column',
+    alignContent: 'flex-start',
+    flexShrink: 0,
+    fontSize: 32
+  }
+};
+
+export default (props: Props) => {
+  let { children } = props;
   if (!Array.isArray(children)) {
     children = [children];
   }
 
-  let nativeProps = {
+  let nativeProps: any = {
     ...props,
     ...{
       style: props.style || {},
@@ -15,11 +28,11 @@ export default (props) => {
   };
 
   let textString = '';
-  if (props.children != null) {
-    if (!Array.isArray(props.children)) {
-      textString = props.children.toString();
+  if (children != null) {
+    if (!Array.isArray(children)) {
+      textString = children;
     } else {
-      textString = props.children.join('');
+      textString = children.join('');
     }
   }
 
@@ -42,29 +55,17 @@ export default (props) => {
     };
     let numberOfLines = props.numberOfLines;
     if (numberOfLines) {
-      if (parseInt(numberOfLines) === 1) {
+      if (numberOfLines === 1) {
         styleProps.whiteSpace = 'nowrap';
       } else {
         styleProps.display = '-webkit-box';
-        styleProps.webkitBoxOrient = 'vertical';
-        styleProps.webkitLineClamp = String(numberOfLines);
+        styleProps.WebkitBoxOrient = 'vertical';
+        styleProps.WebkitLineClamp = numberOfLines;
       }
 
       styleProps.overflow = 'hidden';
     }
 
     return <span {...nativeProps} style={{...styles.text, ...styleProps}}>{textString}</span>;
-  }
-};
-
-let styles = {
-  text: {
-    border: '0 solid black',
-    boxSizing: 'border-box',
-    display: 'block',
-    flexDirection: 'column',
-    alignContent: 'flex-start',
-    flexShrink: 0,
-    fontSize: 32
   }
 };
