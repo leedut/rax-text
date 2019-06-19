@@ -4,4 +4,6 @@ import * as DriverWeex from 'driver-weex';
 import { isWeex } from 'universal-env';
 import Text from '../src/index';
 
-render(<Text>Hello World</Text>, document.body, { driver:isWeex ? DriverWeex : DriverDOM });
+render(<Text onPress={() => {
+  alert('Hello World');
+}}>Hello World</Text>, document.body, { driver:isWeex ? DriverWeex : DriverDOM });

@@ -1,11 +1,10 @@
-"use strict";
 import fmtEvent from './fmtEvent';
 
 Component({
   data: {},
   props: {
-    className: "",
-    style: "",
+    className: '',
+    style: '',
     numberOfLines: 0,
     onClick: function onClick() {}
   },
