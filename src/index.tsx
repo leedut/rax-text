@@ -15,15 +15,24 @@ let styles = {
 };
 
 export default (props: Props) => {
-  let { children } = props;
+  let { children, style } = props;
   if (!Array.isArray(children)) {
     children = [children];
+  }
+
+  if (Array.isArray(style)) {
+    let styleObject = {};
+    style.map(item => {
+      styleObject = Object.assign(styleObject, item || {});
+      return item;
+    });
+    style = styleObject;
   }
 
   let nativeProps: any = {
     ...props,
     ...{
-      style: props.style || {},
+      style: style || {},
     },
   };
 
